@@ -1,34 +1,36 @@
+# -*-coding: Latin-1 -*
+
 import random
 import matplotlib.pyplot as plt
 
 
-def simuler_lancers_de(n, nombre_de_dÃ©s):
-    # Dictionnaire pour stocker les frÃ©quences des faces du dÃ©
-    frequences = {i: 0 for i in range(1, 7)}  # Faces du dÃ© (1 Ã  6)
+def simuler_lancers_de(n, nombre_de_dés):
+    # Dictionnaire pour stocker les fréquences des faces du dé
+    frequences = {i: 0 for i in range(1, 7)}  # Faces du dé (1 à 6)
 
-    # Effectuer les lancers de dÃ©s
+    # Effectuer les lancers de dés
     for _ in range(n):
-        for _ in range(nombre_de_dÃ©s):
-            lancer = random.randint(1, 6)  # Lancer un dÃ© Ã  six faces
-            frequences[lancer] += 1  # Augmenter la frÃ©quence de la face obtenue
+        for _ in range(nombre_de_dés):
+            lancer = random.randint(1, 6)  # Lancer un dé à six faces
+            frequences[lancer] += 1  # Augmenter la fréquence de la face obtenue
 
     return frequences
 
 
 def afficher_resultats(frequences, total_lancers):
-    print("FrÃ©quence d'apparition de chaque face du dÃ© :")
+    print("Fréquence d'apparition de chaque face du dé :")
     for face, frequence in frequences.items():
         pourcentage = (frequence / total_lancers) * 100
         print(f"Face {face}: {frequence} fois ({pourcentage:.2f}%)")
 
-    # CrÃ©ation du graphique
+    # Création du graphique
     faces = list(frequences.keys())
     valeurs = list(frequences.values())
 
     plt.bar(faces, valeurs, color='skyblue')
-    plt.xlabel('Faces du dÃ©')
-    plt.ylabel('FrÃ©quence')
-    plt.title('FrÃ©quence d\'apparition des faces du dÃ© aprÃ¨s {} lancers'.format(total_lancers))
+    plt.xlabel('Faces du dé')
+    plt.ylabel('Fréquence')
+    plt.title('Fréquence d\'apparition des faces du dé après {} lancers'.format(total_lancers))
     plt.xticks(faces)  # Pour afficher toutes les faces sur l'axe x
     plt.grid(axis='y', linestyle='--', alpha=0.7)
     plt.show()  # Affiche le graphique
@@ -36,10 +38,10 @@ def afficher_resultats(frequences, total_lancers):
 
 # Fonction principale
 def main():
-    # Nombre maximum de lancers pour Ã©viter les crashs
+    # Nombre maximum de lancers pour éviter les crashs
     MAX_LANCERS = 100000
 
-    # Demande Ã  l'utilisateur combien de lancers effectuer
+    # Demande à l'utilisateur combien de lancers effectuer
     try:
         total_lancers = int(input("Combien de lancers souhaitez-vous effectuer ? (max {}): ".format(MAX_LANCERS)))
         if total_lancers < 1 or total_lancers > MAX_LANCERS:
@@ -49,13 +51,13 @@ def main():
         print("Veuillez entrer un nombre valide.")
         return
 
-    # Simuler les lancers de dÃ©s
+    # Simuler les lancers de dés
     frequences = simuler_lancers_de(total_lancers, 1)
 
-    # Afficher les rÃ©sultats
+    # Afficher les résultats
     afficher_resultats(frequences, total_lancers)
 
 
-# ExÃ©cuter le programme principal
+# Exécuter le programme principal
 if __name__ == "__main__":
     main()

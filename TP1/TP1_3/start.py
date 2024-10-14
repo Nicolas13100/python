@@ -18,8 +18,11 @@ def saluer_utilisateurs_depuis_fichier(fichier_noms):
         # 2. Diviser le contenu en noms
         noms = [nom.strip() for nom in contenu.replace('\n', ',').split(',') if nom.strip()]
 
+        # Get the current script directory
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+
         # Vérifier l'existence du fichier ListeMessagesDAccueil
-        fichier_messages = 'TP1\\TP1_3\\ListeMessagesDAccueil.txt'
+        fichier_messages = current_dir + '\\ListeMessagesDAccueil.txt'
         if not os.path.exists(fichier_messages):
             print(f"Le fichier {fichier_messages} est introuvable.")
             return
@@ -43,8 +46,10 @@ def saluer_utilisateurs_depuis_fichier(fichier_noms):
 
 
 def start():
-    # Demander à l'utilisateur d'entrer le chemin du fichier contenant les noms
-    chemin_fichier = 'TP1\\TP1_3\\' + input("Veuillez entrer le chemin du fichier contenant les noms ( ListeDeNom.txt ): ")
+    # Get the current script directory
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    # Demander à l'utilisateur d'entrer le chemin du fichier contenant les nom
+    chemin_fichier = current_dir + '\\' + input("Veuillez entrer le chemin du fichier contenant les noms ( ListeDeNom.txt ): ")
     saluer_utilisateurs_depuis_fichier(chemin_fichier)
 
 # Exécution du programme

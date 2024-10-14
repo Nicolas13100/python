@@ -1,61 +1,61 @@
 import statistics
 import matplotlib.pyplot as plt
+import os
 
 
 def calculer_statistiques(prix):
-    # Calcul de la moyenne
+    """Calcul des statistiques pour une liste de prix."""
     moyenne = sum(prix) / len(prix)
-
-    # Calcul de la variance
     variance = sum((x - moyenne) ** 2 for x in prix) / len(prix)
-
-    # Calcul de l'écart-type
     ecart_type = variance ** 0.5
-
-    # Calcul de la médiane
     mediane = statistics.median(prix)
-
     return moyenne, variance, ecart_type, mediane
 
 
 def afficher_graphique(prix, moyenne, mediane, ecart_type):
-    # Création du graphique
+    """Affiche un histogramme des prix avec des lignes pour les statistiques."""
     plt.figure(figsize=(10, 6))
     plt.hist(prix, bins=10, alpha=0.7, color='blue', edgecolor='black')
 
-    # Ajouter des lignes pour la moyenne, la médiane et l'écart-type
     plt.axvline(moyenne, color='red', linestyle='dashed', linewidth=2, label='Moyenne')
     plt.axvline(mediane, color='green', linestyle='dashed', linewidth=2, label='Médiane')
     plt.axvline(moyenne + ecart_type, color='orange', linestyle='dotted', linewidth=2, label='Écart-Type (+1)')
     plt.axvline(moyenne - ecart_type, color='orange', linestyle='dotted', linewidth=2, label='Écart-Type (-1)')
 
-    # Ajouter des labels et un titre
     plt.title('Distribution des Prix des Produits')
     plt.xlabel('Prix')
     plt.ylabel('Fréquence')
     plt.legend()
-    plt.grid()
+    plt.grid(axis='y', alpha=0.75)
 
-    # Afficher le graphique
     plt.show()
 
 
 def main():
     choix = input("Voulez-vous entrer les prix manuellement (tapez '1') ou depuis un fichier (tapez '2') ? ")
 
+    prix = []
+
     if choix == '1':
         # Saisie manuelle des prix
         prix_input = input("Entrez les prix des produits, séparés par des espaces : ")
-        prix = [float(x) for x in prix_input.split()]
+        try:
+            prix = [float(x) for x in prix_input.split()]
+        except ValueError:
+            print("Erreur : Veuillez entrer uniquement des nombres valides.")
+            return
 
     elif choix == '2':
+        # Get the current script directory
+        current_dir = os.path.dirname(os.path.abspath(__file__))
         # Lecture des prix depuis un fichier
-        nom_fichier = 'TP2\\TP2_3\\' + input("Entrez le nom du fichier contenant les prix : ")
+        nom_fichier = current_dir + '\\' +input("Entrez le nom du fichier contenant les prix : ")
+
         try:
             with open(nom_fichier, 'r') as fichier:
                 prix = [float(x) for x in fichier.read().split()]
         except FileNotFoundError:
-            print("Le fichier spécifié n'existe pas.")
+            print(f"Le fichier {nom_fichier} est introuvable.")
             return
         except ValueError:
             print("Erreur de format dans le fichier. Assurez-vous que les prix sont des nombres valides.")
@@ -63,6 +63,10 @@ def main():
 
     else:
         print("Choix invalide.")
+        return
+
+    if not prix:
+        print("Erreur : Aucune donnée de prix valide n'a été fournie.")
         return
 
     # Calcul des statistiques

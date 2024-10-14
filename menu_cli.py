@@ -29,11 +29,11 @@ def main():
 
 
 def run_tp_menu(tp_folder):
-    """Run the menu.py of the selected TP."""
+    """Run the menu_gui.py of the selected TP."""
     # Get the current script directory
     current_dir = os.path.dirname(os.path.abspath(__file__))
 
-    # Construct the path to the TP's menu.py
+    # Construct the path to the TP's menu_gui.py
     script_path = os.path.join(current_dir, tp_folder, 'menu.py')
 
     # Make sure the script exists before trying to run it

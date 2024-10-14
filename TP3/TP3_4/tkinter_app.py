@@ -4,10 +4,14 @@ import unittest
 from io import StringIO
 from unittest import TestLoader, TextTestRunner
 from unittest.mock import patch
+import tkinter as tk
+from tkinter import scrolledtext
 
+# Import your classes here
 from TP3.TP3_1.main import Livre, Bibliotheque
 from TP3.TP3_2.main import Bateau
 from TP3.TP3_3.main import Port
+
 
 class TestLivre(unittest.TestCase):
 
@@ -35,6 +39,8 @@ class TestLivre(unittest.TestCase):
         self.livre.auteur = "Orwell"
         self.assertEqual(self.livre.auteur, "Orwell")
         self.assertEqual(str(self.livre), '"1984" par Orwell')
+
+    pass
 
 class TestBibliotheque(unittest.TestCase):
 
@@ -81,6 +87,8 @@ class TestBibliotheque(unittest.TestCase):
             output = mock_stdout.getvalue()
 
         self.assertEqual(output.strip(), "La bibliothèque est vide.")
+
+    pass
 
 class TestBateau(unittest.TestCase):
 
@@ -151,6 +159,8 @@ class TestBateau(unittest.TestCase):
 
         self.assertIn("Le bateau Titanic est en train de naviguer.", output)
 
+    pass
+
 class TestPort(unittest.TestCase):
 
     def setUp(self):
@@ -218,56 +228,98 @@ class TestPort(unittest.TestCase):
 
         self.assertEqual(output.strip(), "Aucun bateau à faire naviguer dans le port Marseille.")
 
-def menu():
-    """Display a menu for test selection."""
-    print("Choisissez le test à exécuter :")
-    print("1. Test du Livre")
-    print("2. Test de la Bibliothèque")
-    print("3. Test du Bateau")
-    print("4. Test du Port")
-    print("5. Exécuter tous les tests")
-    print("0 Quitter")
+    pass
+
+
+class TestApp:
+    def __init__(self, master):
+        self.master = master
+        self.master.title("Unit Test Runner")
+
+        # Create a text area to display test results
+        self.result_area = scrolledtext.ScrolledText(master, width=60, height=20)
+        self.result_area.pack(pady=10)
+
+        # Buttons for each test category
+        self.create_button("Test du Livre", self.run_test_livre)
+        self.create_button("Test de la Bibliothèque", self.run_test_bibliotheque)
+        self.create_button("Test du Bateau", self.run_test_bateau)
+        self.create_button("Test du Port", self.run_test_port)
+        self.create_button("Exécuter tous les tests", self.run_all_tests)
+        self.create_button("Quitter", self.quit_app)
+
+    def create_button(self, text, command):
+        """Helper method to create a button."""
+        button = tk.Button(self.master, text=text, command=command)
+        button.pack(pady=5)
+
+    def run_test(self, test_case):
+        """Run a specific test case and display results."""
+        suite = TestLoader().loadTestsFromTestCase(test_case)
+        with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
+            TextTestRunner(stream=mock_stdout, verbosity=2).run(suite)
+            output = mock_stdout.getvalue()
+        self.display_results(output)
+
+    def run_test_livre(self):
+        """Run the Livre tests."""
+        self.run_test(TestLivre)
+
+    def run_test_bibliotheque(self):
+        """Run the Bibliotheque tests."""
+        self.run_test(TestBibliotheque)
+
+    def run_test_bateau(self):
+        """Run the Bateau tests."""
+        self.run_test(TestBateau)
+
+    def run_test_port(self):
+        """Run the Port tests."""
+        self.run_test(TestPort)
+
+    def run_all_tests(self):
+        """Run all tests."""
+        suite = unittest.TestSuite()
+        loader = unittest.TestLoader()
+        suite.addTests(loader.loadTestsFromTestCase(TestLivre))
+        suite.addTests(loader.loadTestsFromTestCase(TestBibliotheque))
+        suite.addTests(loader.loadTestsFromTestCase(TestBateau))
+        suite.addTests(loader.loadTestsFromTestCase(TestPort))
+
+        with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
+            TextTestRunner(stream=mock_stdout, verbosity=2).run(suite)
+            output = mock_stdout.getvalue()
+        self.display_results(output)
+
+    def display_results(self, output):
+        """Display the test results in the text area."""
+        self.result_area.delete(1.0, tk.END)  # Clear previous output
+        self.result_area.insert(tk.END, output)  # Insert new output
+
+    def quit_app(self):
+        """Close the application."""
+        self.master.quit()
+
 
 def main():
-    while True:
-        menu()
-        choice = input("Entrez votre choix (1-5) : ")
+    root = tk.Tk()        # Create the main window
+    # Calculate screen dimensions
+    screen_width = root.winfo_screenwidth()
+    screen_height = root.winfo_screenheight()
 
-        if choice == '1':
-            # Run TestLivre
-            suite = TestLoader().loadTestsFromTestCase(TestLivre)
-            TextTestRunner(verbosity=2).run(suite)
-        elif choice == '2':
-            # Run TestBibliotheque
-            suite = TestLoader().loadTestsFromTestCase(TestBibliotheque)
-            TextTestRunner(verbosity=2).run(suite)
+    # Desired window size
+    window_width = 600  # You can adjust this size
+    window_height = 600  # You can adjust this size
 
-        elif choice == '3':
-            # Run TestBateau
-            suite = TestLoader().loadTestsFromTestCase(TestBateau)
-            TextTestRunner(verbosity=2).run(suite)
+    # Calculate x and y coordinates for the window to be centered
+    x = (screen_width // 2) - (window_width // 2)
+    y = (screen_height // 2) - (window_height // 2)
 
-        elif choice == '4':
-            # Run TestPort
-            suite = TestLoader().loadTestsFromTestCase(TestPort)
-            TextTestRunner(verbosity=2).run(suite)
+    # Set the dimensions and position of the window
+    root.geometry(f"{window_width}x{window_height}+{x}+{y}")
+    app = TestApp(root)   # Initialize the TestApp
+    root.mainloop()       # Start the Tkinter event loop
 
-        elif choice == '5':
-            # Run all tests
-            suite = unittest.TestSuite()
-            loader = unittest.TestLoader()
-            suite.addTests(loader.loadTestsFromTestCase(TestLivre))
-            suite.addTests(loader.loadTestsFromTestCase(TestBibliotheque))
-            suite.addTests(loader.loadTestsFromTestCase(TestBateau))
-            suite.addTests(loader.loadTestsFromTestCase(TestPort))
-            TextTestRunner(verbosity=2).run(suite)
-
-        elif choice == '0':
-            print("Fin des tests.")
-            break
-
-        else:
-            print("Choix invalide. Veuillez réessayer.")
 
 if __name__ == "__main__":
     main()

@@ -1,14 +1,19 @@
+import os
+
 import matplotlib.pyplot as plt
 
 def lire_notes_depuis_fichier(nom_fichier):
     """Lit les notes depuis un fichier et les retourne sous forme de liste."""
     try:
-        with open(nom_fichier, 'r') as fichier:
+        # Get the current script directory
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+
+        with open(current_dir + '\\' + nom_fichier, 'r') as fichier:
             contenu = fichier.read()
             notes = list(map(float, contenu.split()))
             return notes
     except FileNotFoundError:
-        print("Le fichier spécifié n'a pas été trouvé.")
+        print(f"Le fichier {nom_fichier} est introuvable.")
         return []
     except ValueError:
         print("Erreur dans le format des notes dans le fichier.")
@@ -60,7 +65,7 @@ def main():
     """Fonction principale pour exécuter le programme."""
     choix = input("Voulez-vous entrer les notes manuellement (M) ou à partir d'un fichier (F) ? ").strip().upper()
     if choix == 'F':
-        nom_fichier ='TP2\\TP2_2\\' + input("Entrez le nom du fichier : ")
+        nom_fichier = input("Entrez le nom du fichier : ")
         notes = lire_notes_depuis_fichier(nom_fichier)
     elif choix == 'M':
         notes = entrer_notes()

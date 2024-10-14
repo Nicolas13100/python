@@ -1,9 +1,5 @@
 # -*-coding:Latin-1 -*
 
-import logging
-
-# Configure logging to a file
-logging.basicConfig(filename='bateau.log', level=logging.INFO)
 
 class Bateau:
     def __init__(self, nom: str, longueur: float, capacite_max: int):
@@ -26,13 +22,11 @@ class Bateau:
         if self.passagers_actuels + nombre > self.capacite_max:
             message = "Impossible d'ajouter des passagers : dépassement de la capacité maximale."
             print(message)
-            logging.info(message)
             return
 
         self.passagers_actuels += nombre
         message = f"{nombre} passagers ont été ajoutés. Passagers actuels : {self.passagers_actuels}."
         print(message)
-        logging.info(message)
 
     def retirer_passagers(self, nombre: int) -> None:
         """Retire des passagers du bateau, sans descendre en dessous de zéro."""
@@ -42,13 +36,11 @@ class Bateau:
         if self.passagers_actuels - nombre < 0:
             message = "Impossible de retirer autant de passagers : pas assez de passagers à bord."
             print(message)
-            logging.info(message)
             return
 
         self.passagers_actuels -= nombre
         message = f"{nombre} passagers ont été retirés. Passagers actuels : {self.passagers_actuels}."
         print(message)
-        logging.info(message)
 
     def afficher_informations(self) -> None:
         """Affiche les informations du bateau."""
@@ -60,15 +52,12 @@ class Bateau:
         ]
         for msg in messages:
             print(msg)
-            logging.info(msg)
 
     def naviguer(self) -> None:
         """Simule la navigation du bateau."""
         message = f"Le bateau {self.nom} est en train de naviguer."
         print(message)
-        logging.info(message)
 
     def reset_passagers(self) -> None:
         """Réinitialise le nombre de passagers à zéro."""
         self.passagers_actuels = 0
-        logging.info("Le nombre de passagers a été réinitialisé à zéro.")
