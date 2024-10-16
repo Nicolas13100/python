@@ -1,85 +1,84 @@
-# -*-coding:Latin-1 -*
+class TemperatureConverter:
+    def celsius_to_fahrenheit(self, celsius):
+        """Convert Celsius to Fahrenheit."""
+        return (celsius * 9 / 5) + 32
 
-import math
+    def fahrenheit_to_celsius(self, fahrenheit):
+        """Convert Fahrenheit to Celsius."""
+        return (fahrenheit - 32) * 5 / 9
 
+    def celsius_to_kelvin(self, celsius):
+        """Convert Celsius to Kelvin."""
+        return celsius + 273.15
 
-def obtenir_entier_positif():
-    """Demande à l'utilisateur de saisir un entier positif inférieur à 1000."""
-    essais = 0
-    print("Bienvenue! Veuillez entrer un entier positif inférieur à 1000.")
-    print("Vous avez un maximum de 15 essais. Tapez 'exit' pour quitter à tout moment.\n")
-
-    while essais < 15:  # Limite d'essais
-        try:
-            user_input = input("Entrez un entier positif inférieur à 1000 (ou 'exit' pour quitter): ")
-            if user_input.lower() == 'exit':
-                print("Merci d'avoir utilisé le programme!")
-                exit()
-            N = int(user_input)
-            if 0 < N < 1000:  # Vérification de la validité
-                return N
-            else:
-                print("Erreur : L'entier doit être positif et inférieur à 1000.")
-        except ValueError:
-            print("Erreur : Veuillez entrer un nombre entier valide.")
-
-        essais += 1
-        print(f"Essais restants: {15 - essais}")
-
-    # Trop d'essais - confirmation avant de quitter
-    confirm_exit = input(
-        "Vous avez atteint la limite de 15 essais. Voulez-vous vraiment quitter? (oui/non): ").strip().lower()
-    if confirm_exit in ['oui', 'o']:
-        print("Merci d'avoir utilisé le programme!")
-        exit()
-    else:
-        return obtenir_entier_positif()  # Restart the input process after confirmation
+    def kelvin_to_celsius(self, kelvin):
+        """Convert Kelvin to Celsius."""
+        return kelvin - 273.15
 
 
-def calculer_somme_et_produit_pairs(N):
-    """Calcule la somme et le produit des nombres pairs jusqu'à N."""
-    somme = 0
-    produit = 1
-    nombres_pairs = []
-
-    for i in range(2, N + 1, 2):
-        somme += i
-        nombres_pairs.append(i)
-
-        try:
-            produit = math.prod(nombres_pairs)  # Utilisation de math.prod pour gérer le produit
-        except OverflowError:
-            print("Erreur : Le produit des nombres pairs est trop grand pour être calculé.")
-            produit = None
-            break
-
-    return somme, produit, nombres_pairs
+def ask_to_continue():
+    """Ask user if they want to continue."""
+    answer = input("Do another conversion? (Y/N): ").strip().upper()
+    return answer == "Y"
 
 
-def afficher_resultats(somme, produit, nombres_pairs):
-    """Affiche les résultats de la somme et du produit."""
-    print("\n--- Résultats ---")
-    print(f"Somme des pairs: {' + '.join(map(str, nombres_pairs))} = {somme}")
+def main():
+    converter = TemperatureConverter()
+    continue_conversion = True
 
-    if produit is not None and nombres_pairs:  # To avoid multiplying an empty list
-        print(f"Produit des pairs: {' * '.join(map(str, nombres_pairs))} = {produit}")
-    else:
-        print("Aucun nombre pair pour le produit ou produit trop grand à calculer.")
+    while continue_conversion:
+        print("\nMenu:")
+        print("1. Convert Celsius to Fahrenheit")
+        print("2. Convert Fahrenheit to Celsius")
+        print("3. Convert Celsius to Kelvin")
+        print("4. Convert Kelvin to Celsius")
 
-    print(f"Nombre de nombres pairs: {len(nombres_pairs)}")
+        choice = input("Please select an option (1, 2, 3, or 4): ").strip()
 
+        if choice == "1":
+            celsius = input("Enter temperature in Celsius: ")
+            try:
+                celsius_value = float(celsius)
+                fahrenheit = converter.celsius_to_fahrenheit(celsius_value)
+                print(f"{celsius_value:.2f} Celsius is {fahrenheit:.2f} Fahrenheit.")
+            except ValueError:
+                print("Invalid input. Please enter a numeric value.")
 
-def start():
-    while True:
-        N = obtenir_entier_positif()  # Obtention d'un entier valide
-        somme, produit, nombres_pairs = calculer_somme_et_produit_pairs(N)
-        afficher_resultats(somme, produit, nombres_pairs)
+        elif choice == "2":
+            fahrenheit = input("Enter temperature in Fahrenheit: ")
+            try:
+                fahrenheit_value = float(fahrenheit)
+                celsius = converter.fahrenheit_to_celsius(fahrenheit_value)
+                print(f"{fahrenheit_value:.2f} Fahrenheit is {celsius:.2f} Celsius.")
+            except ValueError:
+                print("Invalid input. Please enter a numeric value.")
 
-        # Demander à l'utilisateur s'il veut recommencer
-        recommencer = input("Voulez-vous recommencer? (oui/non): ").strip().lower()
-        if recommencer not in ['oui', 'o']:
-            print("Merci d'avoir utilisé le programme!")
-            break
+        elif choice == "3":
+            celsius = input("Enter temperature in Celsius: ")
+            try:
+                celsius_value = float(celsius)
+                kelvin = converter.celsius_to_kelvin(celsius_value)
+                print(f"{celsius_value:.2f} Celsius is {kelvin:.2f} Kelvin.")
+            except ValueError:
+                print("Invalid input. Please enter a numeric value.")
+
+        elif choice == "4":
+            kelvin = input("Enter temperature in Kelvin: ")
+            try:
+                kelvin_value = float(kelvin)
+                if kelvin_value < 0:
+                    print("Kelvin cannot be negative. Please enter a valid temperature.")
+                    continue
+                celsius = converter.kelvin_to_celsius(kelvin_value)
+                print(f"{kelvin_value:.2f} Kelvin is {celsius:.2f} Celsius.")
+            except ValueError:
+                print("Invalid input. Please enter a numeric value.")
+
+        else:
+            print("Invalid selection. Please choose option 1, 2, 3, or 4.")
+
+        continue_conversion = ask_to_continue()
+
 
 if __name__ == "__main__":
-    start()
+    main()

@@ -5,31 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5f27010-5596-4ab3-b8a0-9e5db177ebbc" name="Changes" comment="test">
-      <change afterPath="$PROJECT_DIR$/TP1/TP1_2/tkinter_app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TP1/TP1_3/tkinter_app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TP1/TP1_4/tkinter_app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TP1/TP1_5/tkinter_app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TP2/TP2_1/tkinter_app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TP2/TP2_2/tkinter_app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TP2/TP2_3/tkinter_app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TP2/TP2_4/tkinter_app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TP2/TP2_5/tkinter_app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TP3/TP3_4/tkinter_app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/menu_gui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP1/TP1_3/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/TP1/TP1_3/start.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP1/TP1_4/scores.json" beforeDir="false" afterPath="$PROJECT_DIR$/TP1/TP1_4/scores.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP2/TP2_2/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/TP2/TP2_2/start.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP2/TP2_3/liste.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TP2/TP2_3/liste.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP2/TP2_3/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/TP2/TP2_3/start.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP2/TP2_4/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/TP2/TP2_4/start.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP2/TP2_5/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/TP2/TP2_5/start.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3_2/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/TP3/TP3_2/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP3/TP3_4/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/TP3/TP3_4/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bateau.log" beforeDir="false" afterPath="$PROJECT_DIR$/TP1/TP1_1/tkinter_app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/menu_cli.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scores.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/python.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/python.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TP1/TP1_1/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/TP1/TP1_1/start.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TP1/TP1_1/tkinter_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/TP1/TP1_1/tkinter_app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,27 +46,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python tests.Python tests in tkinter_app.py.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.menu.executor": "Run",
-    "Python.menu_cli.executor": "Run",
-    "Python.menu_gui.executor": "Run",
-    "Python.start.executor": "Run",
-    "Python.tkinter_app.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/moyon/Desktop/python/TP3/TP3_4",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python tests.Python tests in tkinter_app.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.menu.executor&quot;: &quot;Run&quot;,
+    &quot;Python.menu_cli.executor&quot;: &quot;Run&quot;,
+    &quot;Python.menu_gui.executor&quot;: &quot;Run&quot;,
+    &quot;Python.start.executor&quot;: &quot;Run&quot;,
+    &quot;Python.tkinter_app.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/moyon/Desktop/python/TP3/TP3_4&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\moyon\Desktop\python\TP3\TP3_4" />
@@ -120,6 +99,7 @@
       <updated>1728923925598</updated>
       <workItem from="1728923926948" duration="4995000" />
       <workItem from="1728929649051" duration="1509000" />
+      <workItem from="1729066526902" duration="1388000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -148,12 +128,12 @@
     <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/python$tkinter_app.coverage" NAME="tkinter_app Coverage Results" MODIFIED="1728930443477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TP2/TP2_5" />
     <SUITE FILE_PATH="coverage/python$.coverage" NAME=" Coverage Results" MODIFIED="1728931046534" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TP3/TP3_4" />
     <SUITE FILE_PATH="coverage/python$main.coverage" NAME="main Coverage Results" MODIFIED="1728924815282" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/python$menu_cli.coverage" NAME="menu_cli Coverage Results" MODIFIED="1728927337963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/python$start.coverage" NAME="start Coverage Results" MODIFIED="1728929853139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TP2/TP2_4" />
+    <SUITE FILE_PATH="coverage/python$tkinter_app.coverage" NAME="tkinter_app Coverage Results" MODIFIED="1729067213055" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TP1/TP1_1" />
     <SUITE FILE_PATH="coverage/python$menu.coverage" NAME="menu Coverage Results" MODIFIED="1728925064297" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/python$menu_gui.coverage" NAME="menu_gui Coverage Results" MODIFIED="1728931157169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/python$menu_gui.coverage" NAME="menu_gui Coverage Results" MODIFIED="1729068078584" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/python$start.coverage" NAME="start Coverage Results" MODIFIED="1729066821885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TP1/TP1_1" />
+    <SUITE FILE_PATH="coverage/python$menu_cli.coverage" NAME="menu_cli Coverage Results" MODIFIED="1729068086300" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
