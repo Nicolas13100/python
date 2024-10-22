@@ -5,6 +5,7 @@ from tkinter import ttk, messagebox
 import subprocess
 import os
 
+
 def run_script(script_name):
     """Function to run an external Python script."""
     try:

@@ -5,9 +5,140 @@ from io import StringIO
 from unittest import TestLoader, TextTestRunner
 from unittest.mock import patch
 
-from TP3.TP3_1.main import Livre, Bibliotheque
-from TP3.TP3_2.main import Bateau
-from TP3.TP3_3.main import Port
+
+class Livre:
+    def __init__(self, titre, auteur):
+        self.titre = titre
+        self.auteur = auteur
+
+    def __str__(self):
+        return f'"{self.titre}" par {self.auteur}'
+
+class Bibliotheque:
+    def __init__(self):
+        self.livres = []  # Liste vide pour stocker les livres
+
+    def ajouter_livre(self, livre):
+        """Ajoute un livre à la bibliothèque."""
+        self.livres.append(livre)
+        print(f'Livre ajouté : {livre}')
+
+    def retirer_livre(self, titre):
+        """Retire un livre de la bibliothèque par son titre."""
+        for livre in self.livres:
+            if livre.titre == titre:
+                self.livres.remove(livre)
+                print(f'Livre retiré : {livre}')
+                return
+        print(f'Livre avec le titre "{titre}" non trouvé.')
+
+    def afficher_livres(self):
+        """Affiche tous les livres présents dans la bibliothèque."""
+        if not self.livres:
+            print("La bibliothèque est vide.")
+            return
+        print("Livres dans la bibliothèque :")
+        for livre in self.livres:
+            print(livre)
+
+class Bateau:
+    def __init__(self, nom: str, longueur: float, capacite_max: int):
+        """Constructeur pour initialiser le bateau avec son nom, sa longueur et sa capacité maximale."""
+        if longueur < 0:
+            raise ValueError("La longueur doit être positive.")
+        if capacite_max < 0:
+            raise ValueError("La capacité maximale doit être positive.")
+
+        self.nom = nom
+        self.longueur = longueur
+        self.capacite_max = capacite_max
+        self.passagers_actuels = 0
+
+    def ajouter_passagers(self, nombre: int) -> None:
+        """Ajoute des passagers à bord, si la capacité maximale le permet."""
+        if nombre < 0:
+            raise ValueError("Le nombre de passagers à ajouter doit être positif.")
+
+        if self.passagers_actuels + nombre > self.capacite_max:
+            message = "Impossible d'ajouter des passagers : dépassement de la capacité maximale."
+            print(message)
+            return
+
+        self.passagers_actuels += nombre
+        message = f"{nombre} passagers ont été ajoutés. Passagers actuels : {self.passagers_actuels}."
+        print(message)
+
+    def retirer_passagers(self, nombre: int) -> None:
+        """Retire des passagers du bateau, sans descendre en dessous de zéro."""
+        if nombre < 0:
+            raise ValueError("Le nombre de passagers à retirer doit être positif.")
+
+        if self.passagers_actuels - nombre < 0:
+            message = "Impossible de retirer autant de passagers : pas assez de passagers à bord."
+            print(message)
+            return
+
+        self.passagers_actuels -= nombre
+        message = f"{nombre} passagers ont été retirés. Passagers actuels : {self.passagers_actuels}."
+        print(message)
+
+    def afficher_informations(self) -> None:
+        """Affiche les informations du bateau."""
+        messages = [
+            f"Nom du bateau : {self.nom}",
+            f"Longueur du bateau : {self.longueur} mètres",
+            f"Capacité maximale : {self.capacite_max} passagers",
+            f"Passagers actuels : {self.passagers_actuels}"
+        ]
+        for msg in messages:
+            print(msg)
+
+    def naviguer(self) -> None:
+        """Simule la navigation du bateau."""
+        message = f"Le bateau {self.nom} est en train de naviguer."
+        print(message)
+
+    def reset_passagers(self) -> None:
+        """Réinitialise le nombre de passagers à zéro."""
+        self.passagers_actuels = 0
+
+class Port:
+    def __init__(self, nom):
+        """Constructeur pour initialiser le port avec son nom et une liste vide de bateaux."""
+        self.nom = nom  # Nom du port
+        self.bateaux = []  # Liste vide pour stocker les bateaux présents dans le port
+
+    def ajouter_bateau(self, bateau):
+        """Ajoute un bateau à la liste des bateaux du port."""
+        self.bateaux.append(bateau)
+        print(f'Bateau {bateau.nom} ajouté au port {self.nom}.')
+
+    def retirer_bateau(self, bateau):
+        """Retire un bateau de la liste des bateaux du port."""
+        if bateau in self.bateaux:
+            self.bateaux.remove(bateau)
+            print(f'Bateau {bateau.nom} retiré du port {self.nom}.')
+        else:
+            print(f'Le bateau {bateau.nom} n\'est pas présent dans le port {self.nom}.')
+
+    def afficher_bateaux(self):
+        """Affiche les informations de tous les bateaux présents dans le port."""
+        if not self.bateaux:
+            print(f"Aucun bateau n'est présent dans le port {self.nom}.")
+            return
+        print(f"Bateaux présents dans le port {self.nom} :")
+        for bateau in self.bateaux:
+            bateau.afficher_informations()
+
+    def faire_naviguer_tous_les_bateaux(self):
+        """Fait naviguer tous les bateaux du port."""
+        if not self.bateaux:
+            print(f"Aucun bateau à faire naviguer dans le port {self.nom}.")
+            return
+        print(f"Navigation de tous les bateaux dans le port {self.nom} :")
+        for bateau in self.bateaux:
+            bateau.naviguer()
+
 
 class TestLivre(unittest.TestCase):
 
