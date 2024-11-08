@@ -1,0 +1,13 @@
+Statistiques d'analyse des âges
+Médiane : 56.0
+Moyenne : 52.83157894736842
+Mode : 5
+Écart-type : 34.652759480482764
+
+Fréquence des groupes d'âge:
+0-18     25
+19-30     5
+31-50    14
+51-70    16
+71-90    20
+91+      15
