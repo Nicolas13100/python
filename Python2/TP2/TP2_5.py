@@ -60,4 +60,4 @@ def tp2_5_menu():
 
 # Exécuter le programme principal
 if __name__ == "__main__":
-    main()
+    tp2_5_menu()
